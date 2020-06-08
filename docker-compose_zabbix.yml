@@ -1,6 +1,6 @@
 version: "3"
 services: 
-  zabbix-mysql-server:
+  mysql:
     image: mysql:5.7 
     container_name: zabbix-mysql-server
     ports: 
@@ -18,7 +18,7 @@ services:
     container_name: zabbix-server-mysql
     hostname: zabbix-server-mysql
     depends_on: 
-      - zabbix-mysql-server
+      - mysql
     environment: 
       - DB_SERVER_HOST=mysql
       - MYSQL_USER=zabbix
@@ -35,7 +35,7 @@ services:
     hostname: zabbix-web-nginx-mysql
     container_name:  zabbix-web-nginx-mysql
     depends_on: 
-      - zabbix-mysql-server
+      - mysql
       - zabbix-server
     environment: 
       - DB_SERVER_HOST=mysql
