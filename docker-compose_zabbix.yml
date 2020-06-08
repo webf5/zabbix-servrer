@@ -20,6 +20,8 @@ services:
     hostname: zabbix-server-mysql
     links: 
       - zabbix-mysql-server:mysql
+    depends_on: 
+      - zabbix-mysql-server
     environment: 
       - DB_SERVER_HOST=mysql
       - MYSQL_USER=zabbix
@@ -38,6 +40,9 @@ services:
     links: 
       - zabbix-mysql-server:mysql
       - zabbix-server-mysql:zabbix-server
+    depends_on: 
+      - zabbix-mysql-server
+      - zabbix-server-mysql
     environment: 
       - DB_SERVER_HOST=mysql
       - MYSQL_USER=zabbix
