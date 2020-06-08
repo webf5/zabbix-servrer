@@ -47,6 +47,8 @@ services:
       - PHP_TZ=Asia/Shanghai
     ports: 
       - 8880:8080
+    volumes: 
+      - ${curDir}/DejaVuSans.ttf:/usr/share/zabbix/assets/fonts/DejaVuSans.ttf
     restart: always
     
 
